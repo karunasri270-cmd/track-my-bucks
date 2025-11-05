@@ -1,0 +1,157 @@
+/* Base */
+:root {
+  --bg: #0b1020;
+  --card: #121935;
+  --text: #e6eaf2;
+  --muted: #9aa3b2;
+  --accent: #5b8cff;
+  --accent-2: #59d3a0;
+  --danger: #ff6b6b;
+  --border: #223056;
+}
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: radial-gradient(1200px 800px at 20% -10%, #1b2550 0%, transparent 50%),
+              radial-gradient(800px 600px at 100% 0%, #0e1538 0%, transparent 60%),
+              var(--bg);
+  color: var(--text);
+}
+
+/* Layout */
+.app {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+  display: grid;
+  gap: 16px;
+}
+.app-header {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, #18224a, #131c3d);
+  border-radius: 12px;
+}
+
+.section h2 { margin: 0 0 12px; font-size: 18px; color: var(--text); }
+.card {
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, #121a3a, #0f1631);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+/* Form */
+.form {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { color: var(--muted); font-size: 12px; }
+.field input, .field select {
+  height: 38px;
+  padding: 8px 10px;
+  color: var(--text);
+  background: #0e1535;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+}
+.field input:focus, .field select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(91, 140, 255, 0.25);
+}
+.actions { display: flex; align-items: end; }
+button {
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 8px;
+  border: 1px solid color-mix(in oklab, var(--accent) 60%, white 0%);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 60%, #000 0%), var(--accent));
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:hover { filter: brightness(1.05); }
+button.danger {
+  background: linear-gradient(180deg, color-mix(in oklab, var(--danger) 60%, #000 0%), var(--danger));
+  border-color: color-mix(in oklab, var(--danger) 60%, white 0%);
+}
+
+/* Table */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.filter { display: flex; align-items: center; gap: 8px; }
+.table-wrap { overflow: auto; }
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.table thead th {
+  text-align: left;
+  color: var(--muted);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 8px;
+}
+.table tbody td {
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.table .num { text-align: right; font-variant-numeric: tabular-nums; }
+.empty { text-align: center; color: var(--muted); }
+
+/* Totals */
+.totals {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+.total-item {
+  border: 1px solid var(--border);
+  background: #10183a;
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: grid;
+  gap: 4px;
+}
+.total-item .label { color: var(--muted); font-size: 12px; }
+.total-item .value { font-size: 16px; font-weight: 700; color: var(--accent-2); }
+.total-item.overall .value { color: #ffd36e; }
+
+/* Footer */
+.footer {
+  margin-top: 8px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  background: #0e1535;
+  border-radius: 12px;
+  color: var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .form { grid-template-columns: 1fr 1fr; }
+  .totals { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 520px) {
+  .form { grid-template-columns: 1fr; }
+  .section-header { flex-direction: column; align-items: flex-start; }
+}
+
+/* Inline edit buttons spacing */
+.trow .row { gap: 6px; }
+.row { display: inline-flex; gap: 6px; }

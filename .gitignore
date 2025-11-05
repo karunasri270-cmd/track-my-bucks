@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+
+# build outputs
+dist/
+dist-ssr/
+*.local
+
+# editor settings
+.vscode/
+.idea/
+.DS_Store
+
+# misc
+.env
+*.log
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
